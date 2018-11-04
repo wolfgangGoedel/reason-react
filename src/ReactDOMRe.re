@@ -607,8 +607,6 @@ type props = {
 
 external objToDOMProps : Js.t({..}) => props = "%identity";
 
-[@deprecated "Please use ReactDOMRe.props instead"] type reactDOMProps = props;
-
 [@bs.splice] [@bs.val] [@bs.module "react"]
 external createElement :
   (string, ~props: props=?, array(ReasonReact.reactElement)) =>

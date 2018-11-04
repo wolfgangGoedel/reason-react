@@ -212,12 +212,6 @@ let wrapReasonForJs:
   ) =>
   reactClass;
 
-[@deprecated "
-Were you using this because you needed to pass a children array reference to a DOM element?  We now support children spread for DOM elements: `<div> ...children </div>`.
-Alternatively, if you're using this because the prop name contains a hyphen, please use `ReactDOMRe.createElementVariadic` instead."]
-let createDomElement:
-  (string, ~props: Js.t({..}), array(reactElement)) => reactElement;
-
 /**
  * Wrap props into a JS component
  * Use for interop when Reason components use JS components
