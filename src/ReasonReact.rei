@@ -69,6 +69,15 @@ let element:
 /* type jsPropsToReason('jsProps) =
   'jsProps => component; */
 
+/* Hooks */
+
+let useState: 'a => ('a, ('a => 'a) => unit);
+
+let useEffect: (unit => option(unit => unit), 'a) => unit;
+
+let useReducer:
+  (('state, 'action) => 'state, 'state) => ('state, 'action => unit);
+
 
 /***
  * We *under* constrain the kind of component spec this accepts because we actually extend the *originally*

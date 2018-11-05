@@ -85,6 +85,26 @@ let element =
   };
 };
 
+[@bs.module "react"]
+external _useState: 'a => ('a, (. ('a => 'a)) => unit) = "useState";
+let useState = initial => {
+  let (value, setValue) = _useState(initial);
+  (value, proj => setValue(. old => proj(old)));
+};
+
+[@bs.module "react"]
+external useEffect: (unit => option(unit => unit), 'a) => unit = "";
+
+[@bs.module "react"]
+external _useReducer:
+  ([@bs.uncurry] (('state, 'action) => 'state), 'state) =>
+  ('state, (. 'action) => unit) =
+  "useReducer";
+let useReducer = (reducer, initial) => {
+  let (state, dispatch) = _useReducer(reducer, initial);
+  (state, action => dispatch(. action));
+};
+
 /* let wrapReasonForJs =
     (
       ~component,
